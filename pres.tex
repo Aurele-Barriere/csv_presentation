@@ -1,0 +1,60 @@
+\documentclass[page number]{beamer}
+\usetheme[sectionpage=none,numbering=fraction,progressbar=foot]{metropolis}
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning,shapes,fit}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\makeatletter
+\makeatother
+
+\setcounter{tocdepth}{1} % remove subsection from table of contents
+
+% colors
+\definecolor{mDarkRed}{HTML}{6F1616}
+\definecolor{mDarkGreen}{HTML}{106235}
+\definecolor{mTeal}{HTML}{112233}
+\definecolor{mBlack}{HTML}{000000}
+\setbeamercolor{normal text}{fg=mTeal}
+\setbeamercolor{alerted text}{fg=mDarkRed}
+\setbeamercolor{example text}{fg=mDarkGreen}
+\setbeamercolor{title separator}{fg=purple,bg=mBlack}
+
+\def\outline{
+  \begin{frame}[plain,noframenumbering]
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\begin{document}
+\title{Undecidable problems about timed automata}
+
+\author{Aur\`ele Barri\`ere \& Joshua Peignier}
+
+\date{\textit{ENS Rennes}
+  \vfill
+  \textbf{January 9, 2019}}
+
+\def\outline{
+  \begin{frame}[plain,noframenumbering]
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{frame}[plain,noframenumbering]
+  \vspace{-2cm}
+  \maketitle
+  \vspace{-4cm}
+\end{frame}
+
+\input{intro.tex}
+\input{proof.tex}
+\input{end.tex}
+
+\end{document}
