@@ -1,5 +1,35 @@
 \begin{frame}{Proof}
 
-  \dots
+  \begin{block}{Theorem}
+    The following problems are undecidable.
+  \end{block}
+
+  \begin{alertblock}{Equivalence with a deterministic timed automaton}
+    \begin{itemize}
+	\item \textbf{Input} : a timed automaton $\mathcal{A}$.
+	\item \textbf{Output} : yes if there exists a deterministic timed automaton $\mathcal{B}$ such that $\mathcal{L}(\mathcal{A}) = \mathcal{L}(\mathcal{B})$, else no.
+    \end{itemize}
+  \end{alertblock}
   
+    \begin{alertblock}{Acceptation of the complement}
+    \begin{itemize}
+	\item \textbf{Input} : a timed automaton $\mathcal{A}$.
+	\item \textbf{Output} : yes if there exists a timed automaton $\mathcal{B}$ such that $\mathcal{L}(\mathcal{A})^c = \mathcal{L}(\mathcal{B})$, else no.
+    \end{itemize}
+  \end{alertblock}
+
 \end{frame}
+
+\begin{frame}{Proof}
+   \begin{block}{Notation}
+    Let $A$ be the language of words of the form $t_1 a \dots t_n a$ such that there exists a pair of $a$ separated by a time distance $1$:
+$$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
+  \end{block}
+  \begin{block}{Property}
+    The language $A$ is timed regular.\\
+    The language $A^c$ is not timed regular.
+  \end{block}
+  \begin{block}{Proof idea}
+    If there existed a timed automaton accepting $A^c$, it would need an unbounded number of clocks.
+  \end{block}
+\end{frame}{Proof}
