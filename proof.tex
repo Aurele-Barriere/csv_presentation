@@ -20,16 +20,79 @@
 
 \end{frame}
 
+
 \begin{frame}{Proof}
+
    \begin{block}{Notation}
     Let $A$ be the language of words of the form $t_1 a \dots t_n a$ such that there exists a pair of $a$ separated by a time distance $1$:
 $$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
   \end{block}
+
   \begin{block}{Property}
     The language $A$ is timed regular.\\
     The language $A^c$ is not timed regular.
   \end{block}
+
   \begin{block}{Proof idea}
-    If there existed a timed automaton accepting $A^c$, it would need an unbounded number of clocks.
+    If there existed a timed automaton accepting $A^c$, it would need an unbounded number of clocks.\\
+    \textbf{maybe draw the automaton for $A$ ?}
   \end{block}
-\end{frame}{Proof}
+
+\end{frame}
+
+
+\begin{frame}{Proof}
+
+	\begin{block}{Notation}
+	    $\Sigma$ is an alphabet containing $a$ ; $c$ is a letter not in $\Sigma$. $\Gamma = \Sigma \cup \{c\}$.
+  	\end{block}
+
+	\begin{block}{Goal}
+		$L$ is a timed regular language over $(\mathbb{R}\times\Sigma)^*$, and an input of the universability problem. Build the reduction to equivalence with a deterministic timed automaton and to acceptation of the complement.\\
+  	\end{block}
+
+	\begin{block}{Notation}
+		\begin{itemize}
+			\item $\mathcal{L}_1 = L.(\mathbb{R} \times \{c\}).(\mathbb{R}\times\Sigma)^*$
+			\item $\mathcal{L}_2$: set of words over $\Sigma$ with no $c$ or at least two $c$.
+			\item $\mathcal{L}_3 = (\mathbb{R}\times\Sigma)^*.(\mathbb{R} \times \{c\}).A$
+		\end{itemize}
+  	\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Proof}
+
+	\begin{block}{Notation}
+		$\mathcal{L} = \mathcal{L}_1 \cup \mathcal{L}_2 \cup \mathcal{L}_3$ is the input to equivalence with a deterministic timed automaton and acceptation of the complement, built from $L$.
+	\end{block}
+
+	\begin{block}{Property}
+		$\mathcal{L} = \mathcal{L}_1 \cup \mathcal{L}_2 \cup \mathcal{L}_3$ is timed regular, since $L$ and $A$ are timed regular.
+	\end{block}
+
+	\begin{block}{Lemma}
+		If $L$ is universal, then $\mathcal{L}$ is accepted by a deterministic timed automaton, and $\mathcal{L}^c$ is accepted by a timed automaton.
+	\end{block}
+
+	\begin{block}{Proof}
+		Easy: if $L = (\mathbb{R}\times\Sigma)^*$, then $\mathcal{L} = (\mathbb{R}\times\Gamma)^*$ and $\mathcal{L}^c = \emptyset$.
+	\end{block}
+
+	
+\end{frame}
+
+
+\begin{frame}{Proof}
+
+	\begin{block}{Lemma}
+		If $L \subsetneq (\mathbb{R}\times\Sigma)^*$, then $\mathcal{L}^c$ is not timed regular.
+	\end{block}
+	
+	\begin{block}{Proof}
+	Let $u = t_1 a_1 \dots t_n a_n \not\in L$, and $x \in (\mathbb{R}\times\Sigma)^*$. Then $u 1 c x \in \mathcal{L}$ iff $x \in A$. Thus, $u 1 c x \in \mathcal{L}^c$ iff $x \in A^c$.\\
+	\textbf{Proof of not-regularity of $\mathcal{L}^c$: similar to the one of $x \in A^c$, which is not detailed.}
+	\end{block}
+
+\end{frame}
