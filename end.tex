@@ -21,29 +21,94 @@
   \end{alertblock}
 
   $R_1=\{t_1 . a . 1 . a . t_2 . a~|~t_1+t_2 = 1\}$.
-  Regular language. draw automata?
+  Regular language.
+
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}[%
+        every node/.style={circle, minimum size=4pt,minimum height=4pt, inner sep=1pt, align=center},
+        shorten >=2pt,
+        node distance=1.6cm, >=latex
+      ]
+      \node [] (s0) [draw] {$x<1$};
+      \node [] (s1) [draw, right=of s0] {$y\leq 1$};
+      \node [] (s2) [draw, right=of s1] {$x\leq 2$};
+      \node [] (s3) [draw, accepting, right=of s2] {\phantom{$x\leq 2$}};
+      \path [draw] (s0) edge[->,above]  node {$y:=0$\\a} (s1)
+      (s1) edge[->,above]  node {$y=1$\\a} (s2)
+      (s2) edge[->,above]  node {$x=2$\\a} (s3);
+    \end{tikzpicture}
+  \end{figure}
+
 
   $R_2=\{1 . b . s . b ~|~ s\in\mathbb{R}\}$. Regular.
 
   Prove that $R_1\bowtie R_2$ is not timed regular.
 
+  If it was, then $\{t_1.a.\mathbf{1.b.s.b}.1.a.t_2.a~|~t_1+t_2=1\}$ would be too.
+\end{frame}
+
+\begin{frame}{Shuffling timed language}
+  Assume we have an automata for $\{t_1.a.\mathbf{1.b.s.b}.1.a.t_2.a~|~t_1+t_2=1\}$.
+  
+  After reading $t_1.a.\mathbf{1.b.s.b}.1.a$, the clocks can either be
+  \begin{itemize}
+  \item $t_1+s=2$
+  \item $s+2$
+  \item $s+1$
+  \item 1
+  \end{itemize}
+  
+  With any of these values, we can't derive a test to accept $t_2$ such that $t_1+t_2=1$.
+  
   \begin{exampleblock}{Theorem}
     It is undecidable to determine whether the shuffle of two timed regular languages is timed regular.\\
-    Reduction to the universality problem.
+    Reduction from the universality problem.
   \end{exampleblock}
-    
-  
 \end{frame}
 
 \begin{frame}{Corollaries}
-  ...
+  \begin{block}{Bounded Ressources}
+    $TA(n,K)$ Timed automata with at most $n$ clocks and constants are $\leq K$.\\
+    \begin{itemize}
+    \item Given $\mathcal{A,B},n,K$, decide if there is $\mathcal{C} TA(n,K)$ such that $L(\mathcal{C})=L(\mathcal{A})\bowtie L(\mathcal{B})$. \textbf{Undecidable}.
+    \item Given $\mathcal{A,B},n$, decide if there is $\mathcal{C}$ with at most $n$ clocks such that $L(\mathcal{C})=L(\mathcal{A})\bowtie L(\mathcal{B})$. \textbf{Undecidable}.
+    \item Given $\mathcal{A,B},n,K$, decide if there is $\mathcal{C} TA$ such that $L(\mathcal{C})=L(\mathcal{A})\bowtie L(\mathcal{B})$. \textbf{Undecidable}.
+    \end{itemize}
+  \end{block}
+  \vfill
+  
+    
 \end{frame}
 
-\begin{frame}{Timed Büchi automata}
+\begin{frame}{Timed B\"uchi automata}
+  \begin{block}{Definition}
+    Accept infinite words of $(\mathbb{R}\times\Sigma)^\omega$.
+  \end{block}
+  \vfill
+  \begin{alertblock}{Known Result}
+    The universality problem for Timed B\"uchi automata is $\Pi^1_1$-hard.
+  \end{alertblock}
+  \vfill
+  \begin{exampleblock}{Theorems}
+    Given Timed B\"uchi Automata (TBA) $\mathcal{A}$, decide if
+    \begin{itemize}
+    \item Its language is accepted by a deterministic TBA
+    \item Its complementation is accepted by a TBA
+    \end{itemize}
+    Both problems are \textit{highly undecidable}. $\Pi^1_1$-hard.
+  \end{exampleblock}
 
 \end{frame}
 
 \begin{frame}{Conclusion}
+  \begin{block}{Overview}
+    \begin{itemize}
+    \item FORMATS'06
+    \item 52 citations
+    \end{itemize}
+  \end{block}
+  \vfill
   \begin{exampleblock}{Contribution}
     \begin{itemize}
     \item Solved several open problems
