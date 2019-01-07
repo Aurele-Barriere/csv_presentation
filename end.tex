@@ -1,5 +1,54 @@
-\begin{frame}{End}
+\begin{frame}{Shuffle operation}
+  \begin{block}{Shuffling}
+    $$x\bowtie y = \{x_1 . y_1 . \dots . x_n . y_n~|~x=x_1\dots x_n\text{ and }y=y_1\dots y_n\}$$
+  \end{block}
 
-  \dots
+  \begin{block}{Shuffling Sets}
+    Let $R_1, R_2\subseteq M$.
+    $$R_1\bowtie R_2 = \{x\bowtie y~|~x\in R_1~\text{and}~y\in R_2\}$$
+  \end{block}
 
+  \begin{exampleblock}{Shuffling regular untimed languages}
+    The class of regular untimed languages is closed under shuffle.\\
+    What about timed languages?
+  \end{exampleblock}
+  
+\end{frame}
+
+
+\begin{frame}{Shuffling timed languages}
+  \begin{alertblock}{Shuffling timed regular languages is not always regular}
+  \end{alertblock}
+
+  $R_1=\{t_1 . a . 1 . a . t_2 . a~|~t_1+t_2 = 1\}$.
+  Regular language. draw automata?
+
+  $R_2=\{1 . b . s . b ~|~ s\in\mathbb{R}\}$. Regular.
+
+  Prove that $R_1\bowtie R_2$ is not timed regular.
+
+  \begin{exampleblock}{Theorem}
+    It is undecidable to determine whether the shuffle of two timed regular languages is timed regular.\\
+    Reduction to the universality problem.
+  \end{exampleblock}
+    
+  
+\end{frame}
+
+\begin{frame}{Corollaries}
+  ...
+\end{frame}
+
+\begin{frame}{Timed Büchi automata}
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+  \begin{exampleblock}{Contribution}
+    \begin{itemize}
+    \item Solved several open problems
+    \item Proof strategy that works for many problems
+    \item Re-proved some known results
+    \end{itemize}
+  \end{exampleblock}
 \end{frame}
