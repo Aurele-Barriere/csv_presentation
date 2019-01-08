@@ -103,7 +103,7 @@ $$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
 	\begin{block}{Notation}
 		\begin{itemize}
 			\item $\mathcal{L}_1 = L.(\mathbb{R} \times \{c\}).(\mathbb{R}\times\Sigma)^*$
-			\item $\mathcal{L}_2$: set of words over $\Sigma$ with no $c$ or at least two $c$.
+			\item $\mathcal{L}_2$: set of words over $\Gamma$ with no $c$ or at least two $c$.
 			\item $\mathcal{L}_3 = (\mathbb{R}\times\Sigma)^*.(\mathbb{R} \times \{c\}).A$
 		\end{itemize}
   	\end{block}
@@ -141,7 +141,12 @@ $$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
 	
 	\begin{block}{Proof}
 	Let $u = t_1.a_1\dots t_n.a_n \not\in L$, and $x \in (\mathbb{R}\times\Sigma)^*$. Then $u.1.c.x \in \mathcal{L}$ iff $x \in A$. Thus, $u.1.c.x \in \mathcal{L}^c$ iff $x \in A^c$.\\
-	\textbf{Proof of not-regularity of $\mathcal{L}^c$: similar to the one of $x \in A^c$, which is not detailed.}
+
+	If there exists $\mathcal{A}$ accepting $\mathcal{L}^c$: after reading $u.1.c$ in $\mathcal{A}$, the rest of the execution has to accept exactly words of $A^c$. Thus, $\mathcal{L}^c$ is not timed regular, for the same reasons as $A^c$.
+	\end{block}
+	
+	\begin{block}{Corollary}
+		If $L \subsetneq (\mathbb{R}\times\Sigma)^*$, then $\mathcal{L}$ is not accepted by a deterministic timed automaton (since the class of deterministic timed automata is closed under complement).
 	\end{block}
 
 \end{frame}
@@ -149,7 +154,7 @@ $$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
 
 \begin{frame}{Clock Minimization Problem}
 
-  \begin{alertblock}{Minimization of the number of clocks}
+  \begin{alertblock}{Clock minimization with construction}
     Given $\mathcal{A}$ a timed automaton with $n$ clocks, is there an automaton $\mathcal{B}$ with $n-1$ clocks such that $\mathcal{L(B)=L(A)}$? If so, construct $\mathcal{B}$.\\
     This problem is known to be \textbf{undecidable}.
   \end{alertblock}
@@ -157,15 +162,44 @@ $$\exists i,j [\![1,n]\!], i < j  \land  t_{i+1} + \dots + t_j = 1$$
   \begin{exampleblock}{What if we don't ask for a witness?}
     Simply answer Yes or No if the number of clocks can be reduced (decision problem).
   \end{exampleblock}
-    
-\end{frame}
 
-\begin{frame}{Back to clock minimization}
-  
-  \begin{alertblock}{Undecidable problem}
+  \begin{alertblock}{Clock Minimization Problem}
     Given $\mathcal{A}$ a timed automaton with $n$ clocks, is there an automaton $\mathcal{B}$ with $n-1$ clocks such that $\mathcal{L(B)=L(A)}$?
   \end{alertblock}
-
-  Give idea of the proof.
-  
 \end{frame}
+
+
+\begin{frame}{Clock Minimization Problem: Proof sketch}
+  
+  \begin{block}{Theorem}
+     The clock minimization problem is undecidable.
+  \end{block}
+
+  \begin{block}{Proof idea}
+   Reduction from the universality problem.
+  \end{block}
+
+  \begin{block}{Property}
+	$A_n$, the language of timed words containing only $a$, with $n$ pairs of $a$ separated by a time distance of $1$, is timed regular.
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Clock Minimization Problem: Proof sketch}
+	\begin{block}{Notation}
+		Input of the universability problem: $L$, a timed regular language over $(\mathbb{R}\times\Sigma)^*$, accepted by a timed automaton with at most $n$ clocks.\\
+  	\end{block}
+
+	\begin{block}{Notation}
+		\begin{itemize}
+			\item $\mathcal{V}_{n,1} = L.(\mathbb{R} \times \{c\}).(\mathbb{R}\times\Sigma)^*$
+			\item $\mathcal{V}_{n,2}$: set of words over $\Gamma$ with no $c$ or at least two $c$.
+			\item $\mathcal{V}_{n,3} = (\mathbb{R}\times\Sigma)^*.(\mathbb{R} \times \{c\}).A_n$
+		\end{itemize}
+  	\end{block}
+
+	\begin{block}{Property}
+		$L$ is universal iff $\mathcal{V}_{n,1} \cup \mathcal{V}_{n,2} \cup \mathcal{V}_{n,3}$ is accepted by an automaton with $n-1$ clocks.
+	\end{block}
+\end{frame}
+
